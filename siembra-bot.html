@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siembra Bot | IA Conversacional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="img/logo_nav.svg" alt="Siembra Más" class="logo-nav-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="siembra-link.html">Siembra Link</a></li>
+                <li><a href="siembra-bot.html" class="active">Siembra Bot</a></li>
+                <li><a href="siembra-vision.html">Siembra Visión</a></li>
+            </ul>
+            <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <header class="page-header header-bot">
+        <div class="container">
+            <img src="img/logo_bot.svg" alt="Logo Siembra Bot" class="title-logo-img">
+            <p>Tu asistente agrónomo personal impulsado por Inteligencia Artificial.</p>
+        </div>
+    </header>
+
+    <section class="section-padding bg-darker">
+        <div class="container">
+            <div class="tech-layout fade-in">
+                
+                <div class="tech-visuals">
+                    <div class="bot-interface">
+                        <div class="chat-header">
+                            <i class="fa-solid fa-robot"></i> Asistente Siembra+
+                        </div>
+                        <div class="chat-body">
+                            <div class="chat-bubble user">
+                                ¿Cuándo debo regar mi cultivo de café?
+                            </div>
+                            <div class="chat-bubble bot">
+                                Según los sensores de Siembra Link, la humedad del suelo está al 40%. Se recomienda regar mañana temprano, ya que no se esperan lluvias en las próximas 48 horas.
+                            </div>
+                        </div>
+                        <div class="voice-controls">
+                            <button class="voice-btn" id="voiceDemoBtn">
+                                <i class="fa-solid fa-microphone"></i>
+                            </button>
+                            <span style="color:white; font-size:0.8rem; display:block; margin-top:10px">Presiona para hablar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-info text-light">
+                    <h2 class="section-title text-light">Arquitectura de Agentes</h2>
+                    <p class="text-light-dim">
+                        El sistema utiliza un enfoque modular para procesar el lenguaje natural y conectarlo con datos duros.
+                    </p>
+                    
+                    <div class="agents-list">
+                        <div class="agent-item">
+                            <div class="agent-icon"><i class="fa-solid fa-brain"></i></div>
+                            <div class="agent-desc">
+                                <h4>LLM (Large Language Model)</h4>
+                                <p>Motor central (Llama 3 / GPT) para interpretar la intención del agricultor y generar respuestas naturales.</p>
+                            </div>
+                        </div>
+                        <div class="agent-item">
+                            <div class="agent-icon"><i class="fa-solid fa-database"></i></div>
+                            <div class="agent-desc">
+                                <h4>Agente RAG</h4>
+                                <p>Recuperación de información técnica desde manuales de CONAGUA y SIAP para dar respuestas fundamentadas.</p>
+                            </div>
+                        </div>
+                        <div class="agent-item">
+                            <div class="agent-icon"><i class="fa-solid fa-wifi"></i></div>
+                            <div class="agent-desc">
+                                <h4>API Connector</h4>
+                                <p>Enlace en tiempo real con la base de datos de Siembra Link para leer el estado actual del campo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="img/logo_nav.svg" alt="Siembra Más" class="logo-footer-img">
+                    </a>
+                    <p>Tecnología accesible para el campo mexicano. Democratizando la agricultura de precisión con IoT e Inteligencia Artificial.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Explorar</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="siembra-link.html">Hardware (IoT)</a></li>
+                        <li><a href="siembra-bot.html">IA Asistente</a></li>
+                        <li><a href="siembra-vision.html">Computer Vision</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="privacy.html">Aviso de Privacidad</a></li>
+                        <li><a href="terms.html">Términos de Uso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Conecta</h4>
+                    <div class="contact-info">
+                        <p><i class="fa-solid fa-location-dot"></i> Tamaulipas, MX</p>
+                        <p><i class="fa-solid fa-envelope"></i> contacto@siembramas.mx</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://instagram.com" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Siembra Más. Proyecto para Expociencias Nacional.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
