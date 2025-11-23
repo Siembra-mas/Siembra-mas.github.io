@@ -4,7 +4,7 @@
     --medium-green: #32523A;
     --accent-green: #74B74A;
     --cream: #E1EDD5;
-    --white: #ffffff;
+    --white: #F0F6EA;
     --glass: rgba(255, 255, 255, 0.1);
 }
 
@@ -19,6 +19,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden; /* IMPORTANTE: Evita el desbordamiento horizontal */
+    width: 100%;
 }
 
 h1, h2, h3, h4 { font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; }
@@ -84,7 +86,6 @@ nav {
     background: var(--dark-green); color: var(--cream);
     padding: 8rem 0 4rem; text-align: center;
 }
-/* Nota: Eliminé header-vision específico para unificar estilos oscuros como pediste */
 
 /* --- ESTADÍSTICAS --- */
 .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
@@ -149,9 +150,9 @@ nav {
 
 /* --- LOGOS Y SVGs --- */
 .logo { display: flex; align-items: center; text-decoration: none; }
-.logo-nav-img { height: 35px; width: auto; object-fit: contain; }
+.logo-nav-img { height: 45px; width: auto; object-fit: contain; }
 .title-logo-img { max-width: 380px; width: 100%; height: auto; margin: 0 auto 1.5rem auto; display: block; object-fit: contain; }
-.logo-footer-img { height: 60px; width: auto; margin-bottom: 1rem; } /* Nuevo logo para footer */
+.logo-footer-img { height: 60px; width: auto; margin-bottom: 1rem; } 
 
 /* --- FOOTER AVANZADO --- */
 footer {
@@ -266,13 +267,64 @@ footer {
 .legal-content li { font-family: 'Crimson Pro', serif; margin-bottom: 0.5rem; }
 
 /* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-    .hero-content, .tech-layout, .features-grid, .vision-grid, .footer-content { grid-template-columns: 1fr; }
-    .hero-text h1 { font-size: 2.5rem; }
+@media (max-width: 900px) {
+    /* Reiniciamos las rejillas a 1 columna general */
+    .tech-layout, .features-grid, .vision-grid, .footer-content { 
+        grid-template-columns: 1fr; 
+    }
+    
+    /* === CORRECCIÓN DEL HERO (INDEX) === */
+    .hero-main {
+        display: block;  /* 1. Usamos block para apilar verticalmente */
+        text-align: center; /* 2. Centramos todo el contenido */
+        padding-top: 100px; /* Ajuste para que no choque con el navbar */
+        padding-bottom: 4rem;
+        min-height: auto; /* Quitamos altura forzada */
+    }
+
+    .hero-content {
+        display: block; /* 3. Quitamos el GRID para evitar alineaciones raras */
+        padding: 0 1rem; /* Margen de seguridad lateral */
+    }
+    
+    /* 4. Texto: Ajuste crítico de tamaño */
+    .hero-text {
+        margin-bottom: 3rem;
+        width: 100%;
+    }
+
+    .hero-text h1 { 
+        font-size: 2.2rem; /* REDUCIDO de 3.5rem a 2.2rem para que quepa */
+        line-height: 1.2;
+    }
+    
+    /* 5. Botones: Margen y centrado */
+    .cta-group {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    .btn, .btn-outline { margin: 0; }
+
+    /* 6. Estadísticas: Centrado y apilado */
+    .stats-grid {
+        max-width: 450px; 
+        margin: 0 auto;   /* Centrado horizontal */
+        gap: 1rem;
+        /* Aseguramos que si es grid en desktop, aquí se comporte bien */
+        grid-template-columns: 1fr; 
+    }
+    
+    /* === OTROS AJUSTES MÓVIL === */
     .nav-links { display: none; }
     .menu-toggle { display: block; }
     .title-logo-img { max-width: 260px; margin-bottom: 1rem; }
     .logo-nav-img { height: 35px; }
     
-    .footer-content { gap: 2rem; }
+    .footer-content { gap: 2.5rem; text-align: center; }
+    .footer-section h4::after { margin: 5px auto 0 auto; }
+    .social-links { justify-content: center; }
+    .contact-info p { justify-content: center; }
 }
