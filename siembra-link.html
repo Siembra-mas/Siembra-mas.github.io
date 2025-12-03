@@ -6,7 +6,10 @@
     <title>Siembra Link | Hardware IoT</title>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="siembra-link.css">
+    
     <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
 </head>
 <body>
@@ -26,8 +29,14 @@
         </div>
     </nav>
 
-    <header class="page-header">
-        <div class="container">
+<header class="page-header video-header">
+        <video autoplay muted loop playsinline class="header-bg-video">
+            <source src="img/campo_1.mp4" type="video/mp4">
+        </video>
+
+        <div class="header-overlay"></div>
+
+        <div class="container header-content">
             <img src="img/logo_link.svg" alt="Logo Siembra Link" class="title-logo-img">
             <p>Red de sensores IoT para monitoreo micro-climático en tiempo real.</p>
         </div>
@@ -35,6 +44,13 @@
 
     <section class="section-padding">
         <div class="container">
+            
+            <div class="link-intro-box fade-in">
+                <p class="link-intro-text">
+                    El SiembraLink es el módulo de hardware de Internet de las Cosas (IoT) diseñado como la fuente sensorial de la arquitectura Siembra+. Su función es la adquisición de datos en tiempo real directamente desde el campo de cultivo, permitiendo digitalizar variables ambientales críticas para alimentar los modelos predictivos y mantener informado al usuario sobre el estado físico de su siembra.
+                </p>
+            </div>
+
             <div class="tech-layout fade-in">
                 
                 <div class="tech-info">
@@ -57,10 +73,8 @@
                 </div>
                 
                 <div class="tech-visuals">
-                    <div class="diagram-placeholder">
-                        <i class="fa-solid fa-bezier-curve icon-placeholder"></i>
-                        <span>Diagrama de Arquitectura IoT</span>
-                    </div>
+                    <img src="img/diagrama-iot.jpg" alt="Diagrama de Arquitectura IoT" class="diagram-img">
+                    
                     <p class="caption">Esquema de conexión de sensores al nodo central.</p>
                 </div>
 
@@ -68,7 +82,59 @@
         </div>
     </section>
 
-    <footer>
+    <section class="arch-section">
+        <div class="container">
+            <div class="arch-header">
+                <h2 class="highlight-text-dark">Arquitectura del Sistema</h2>
+                <p>Metodología de funcionamiento y procesamiento de datos en el entorno físico.</p>
+            </div>
+
+            <div class="arch-grid">
+                
+                <div class="arch-card fade-in">
+                    <i class="fa-solid fa-microchip arch-icon"></i>
+                    <h3 class="arch-title">Arquitectura</h3>
+                    <p class="arch-desc">
+                        Sistema embebido modular centrado en la eficiencia energética. Utiliza microcontroladores (Arduino/ESP32) y programación en C++ para gestionar sensores de Humedad de Suelo, DHT11 y Lluvia.
+                    </p>
+                </div>
+
+                <div class="arch-card fade-in">
+                    <i class="fa-solid fa-tower-broadcast arch-icon"></i>
+                    <h3 class="arch-title">Alcance Operativo</h3>
+                    <p class="arch-desc">
+                        Opera físicamente en el terreno de cultivo, sirviendo como puente vital entre el mundo físico (tierra/clima) y la plataforma digital, con despliegue en sitio y sincronización inalámbrica.
+                    </p>
+                </div>
+
+                <div class="arch-card fade-in">
+                    <i class="fa-solid fa-wave-square arch-icon"></i>
+                    <h3 class="arch-title">Adquisición de Datos</h3>
+                    <p class="arch-desc">
+                        Transforma señales analógicas y digitales en métricas estandarizadas. Realiza lectura cíclica, normalización de valores (0-100%) y calibración para reducir ruido.
+                    </p>
+                </div>
+
+                <div class="arch-card fade-in">
+                    <i class="fa-solid fa-wifi arch-icon"></i>
+                    <h3 class="arch-title">Conectividad</h3>
+                    <p class="arch-desc">
+                        Garantiza la transmisión continua mediante protocolos web (HTTP/HTTPS), enviando paquetes de datos en formato JSON hacia la API del servidor para su almacenamiento.
+                    </p>
+                </div>
+
+                <div class="arch-card fade-in">
+                    <i class="fa-solid fa-shield-halved arch-icon"></i>
+                    <h3 class="arch-title">Funcionalidad</h3>
+                    <p class="arch-desc">
+                        Monitoreo activo para detectar anomalías (sequía, exceso de lluvia). Los datos actualizan tableros en tiempo real y sirven de input para las recomendaciones del Asistente.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
@@ -97,12 +163,10 @@
                     <h4>Conecta</h4>
                     <div class="contact-info">
                         <p><i class="fa-solid fa-location-dot"></i> Veracruz, MX</p>
-                        <p><i class="fa-solid fa-envelope"></i> contacto@siembramas.mx</p>
+                        <p><i class="fa-solid fa-envelope"></i> siembramas.oficial@gmail.com</p>
                     </div>
                     <div class="social-links">
-                        <a href="https://instagram.com" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://linkedin.com" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
-                    </div>
+                        <a href="https://instagram.com" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a></div>
                 </div>
             </div>
         </div>
@@ -110,6 +174,7 @@
             <p>&copy; 2025 Siembra +. Proyecto para Expociencias Nacional.</p>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

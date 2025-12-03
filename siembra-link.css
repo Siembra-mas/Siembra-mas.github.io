@@ -1,0 +1,325 @@
+/* --- siembra-link.css --- */
+/* Estilos específicos para la página de Hardware */
+
+/* 1. Estilo para el texto introductorio */
+.link-intro-box {
+    background-color: var(--white);
+    border: 1px solid rgba(50, 82, 58, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto 4rem auto; /* Centrado y con margen abajo */
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.link-intro-text {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.2rem;
+    color: var(--dark-green);
+    line-height: 1.8;
+}
+
+/* 2. Grid de Arquitectura (La tabla técnica) */
+.arch-section {
+    background-color: var(--cream);
+    padding: 5rem 0;
+}
+
+.arch-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+}
+
+.arch-grid {
+    display: grid;
+    /* Grid responsivo automático */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* 3. Tarjetas Técnicas (Diseño único) */
+.arch-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    
+    /* Borde lateral izquierdo verde para look técnico */
+    border-left: 5px solid var(--accent-green);
+}
+
+.arch-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.arch-icon {
+    font-size: 2rem;
+    color: var(--medium-green);
+    margin-bottom: 1rem;
+    display: inline-block;
+    background: var(--white);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.arch-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark-green);
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+.arch-desc {
+    font-family: 'Montserrat', sans-serif; /* Fuente más legible para datos técnicos */
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    font-weight: 600; /* Un poco más grueso para la descripción breve */
+}
+
+.arch-details {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1rem;
+    color: #666;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Etiqueta pequeña decorativa */
+.tech-tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    background: var(--white);
+    color: var(--medium-green);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(50, 82, 58, 0.2);
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* --- siembra-link.css Actualizado --- */
+
+/* ... (Tus estilos anteriores de .link-intro-box siguen igual) ... */
+.link-intro-box {
+    background-color: var(--white);
+    border: 1px solid rgba(50, 82, 58, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto 4rem auto;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.link-intro-text {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.2rem;
+    color: var(--dark-green);
+    line-height: 1.8;
+}
+
+.arch-section {
+    background-color: var(--cream);
+    padding: 5rem 0;
+}
+
+.arch-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+}
+
+/* --- AQUÍ ESTÁ EL CAMBIO PRINCIPAL --- */
+.arch-grid {
+    display: flex;           /* Usamos Flexbox en lugar de Grid */
+    flex-wrap: wrap;         /* Permite que bajen de línea si no caben */
+    justify-content: center; /* ESTO CENTRA LAS TARJETAS (incluso si son 2) */
+    gap: 2rem;               /* Espacio entre tarjetas */
+}
+
+.arch-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-left: 5px solid var(--accent-green);
+    
+    /* CONTROL DE TAMAÑO PARA CENTRADO PERFECTO */
+    flex: 1 1 300px;  /* Crece, se encoge, base de 300px */
+    max-width: 380px; /* Límite de ancho para que no se estiren demasiado */
+    width: 100%;      /* Asegura que llenen en móviles */
+}
+/* ------------------------------------- */
+
+.arch-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.arch-icon {
+    font-size: 2rem;
+    color: var(--medium-green);
+    margin-bottom: 1rem;
+    display: inline-block;
+    background: var(--white);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.arch-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--dark-green);
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
+.arch-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+.arch-details {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1rem;
+    color: #666;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.tech-tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.7rem;
+    background: var(--white);
+    color: var(--medium-green);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(50, 82, 58, 0.2);
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* --- CARDS GENERALES (MODIFICADO PARA CENTRAR) --- */
+
+.features-grid {
+    display: flex;           /* Cambiamos Grid por Flexbox */
+    flex-wrap: wrap;         /* Permite que bajen a la siguiente línea */
+    justify-content: center; /* ESTA LÍNEA ES LA MAGIA: Centra todo el contenido */
+    gap: 2rem;               /* Espacio entre tarjetas */
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    
+    /* Agregamos estas líneas para controlar el tamaño */
+    flex: 0 1 350px; /* No crecer más de lo necesario, base de 350px */
+    width: 100%;     /* Asegura que se adapte en móvil */
+    min-width: 280px; /* Evita que se hagan muy pequeñas */
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    color: var(--medium-green);
+    margin-bottom: 1rem;
+}
+
+/* --- Estilos para el Diagrama (Nueva Imagen) --- */
+
+.tech-visuals {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra la imagen y el texto */
+    justify-content: center;
+}
+
+.diagram-img {
+    width: 100%; /* Ocupa el ancho disponible */
+    max-width: 500px; /* Limita el tamaño máximo para que no se vea gigante en PC */
+    height: auto; /* Mantiene la proporción original */
+    
+    /* Estética */
+    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08); /* Sombra suave */
+    border: 1px solid rgba(50, 82, 58, 0.1); /* Borde sutil color verde */
+    
+    /* Animación suave al pasar el mouse */
+    transition: transform 0.3s ease;
+}
+
+.diagram-img:hover {
+    transform: scale(1.02); /* Efecto de "zoom" muy sutil al verla */
+}
+/* --- HEADER CON VIDEO DE FONDO (Sin afectar tamaño de logo) --- */
+
+/* 1. Ajuste al contenedor principal */
+.page-header.video-header {
+    position: relative; /* Necesario para contener el video absoluto */
+    overflow: hidden;   /* Corta el video si se sale */
+    background: #19291D; /* Fondo de respaldo por si el video tarda */
+    /* Mantenemos el padding original de .page-header para no cambiar la altura */
+}
+
+/* 2. El Video (Capa 0) */
+.header-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Rellena todo el espacio sin deformarse */
+    z-index: 0;
+}
+
+/* 3. El Filtro Verde (Capa 1) */
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradiente verde similar al inicio pero un poco más oscuro para leer bien */
+    background: linear-gradient(135deg, rgba(25, 41, 29, 0.9), rgba(50, 82, 58, 0.75));
+    z-index: 1;
+}
+
+/* 4. El Contenido (Capa 2 - Al frente) */
+.header-content {
+    position: relative;
+    z-index: 2; /* Esto coloca el logo y texto ENCIMA del video */
+}
+
+/* Opcional: Sombra al texto para que se lea mejor sobre el video */
+.header-content p {
+    color: var(--white); /* Aseguramos que el texto sea claro */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    font-weight: 500;
+}

@@ -1,0 +1,351 @@
+/* --- 1. VARIABLES --- */
+:root {
+    --dark-green: #19291D;
+    --medium-green: #32523A;
+    --accent-green: #74B74A;
+    --cream: #E1EDD5;
+    --white: #F0F6EA;
+    --glass: rgba(255, 255, 255, 0.1);
+}
+
+/* --- 2. BASE & RESET --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--white);
+    color: var(--dark-green);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+h1, h2, h3, h4 { font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; }
+p, li { font-family: 'Crimson Pro', serif; font-size: 1.15rem; }
+a { text-decoration: none; }
+
+/* --- 3. UTILIDADES USADAS EN BOT --- */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.section-padding { padding: 5rem 0; }
+.bg-darker { background-color: var(--medium-green); }
+.text-light { color: var(--cream); }
+.text-light-dim { color: rgba(225, 237, 213, 0.8); }
+.section-title { margin-bottom: 1.5rem; }
+
+/* --- 4. NAVBAR (Global) --- */
+nav {
+    position: fixed; top: 0; width: 100%; padding: 0.8rem 0;
+    z-index: 1000; background: rgba(25, 41, 29, 0.95);
+    border-bottom: 1px solid var(--medium-green);
+    backdrop-filter: blur(10px);
+}
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.nav-links { list-style: none; display: flex; gap: 2rem; align-items: center; }
+.nav-links a { color: var(--cream); font-weight: 600; font-size: 0.9rem; transition: color 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent-green); }
+.menu-toggle { display: none; color: var(--cream); font-size: 1.5rem; cursor: pointer; }
+.logo-nav-img { height: 45px; width: auto; object-fit: contain; }
+
+/* --- 5. HEADER ESPECÍFICO DE PÁGINA --- */
+.page-header {
+    background: var(--dark-green); color: var(--cream);
+     text-align: center;
+}
+.title-logo-img { 
+    max-width: 380px; width: 100%; height: auto; 
+    margin: 0 auto 1.5rem auto; display: block; object-fit: contain; 
+}
+
+/* --- 6. SECCIÓN PRINCIPAL BOT (Layout) --- */
+.tech-layout { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 4rem; 
+    align-items: start; 
+}
+
+/* --- 7. INTERFAZ DE CHAT (Bot Interface) --- */
+.bot-interface {
+    background: var(--dark-green); padding: 0; border-radius: 20px; overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+.chat-header { 
+    background: rgba(0,0,0,0.2); padding: 1.5rem; 
+    color: white; font-weight: bold; font-family: 'Montserrat'; 
+}
+.chat-body { padding: 2rem; height: 300px; overflow-y: auto; }
+
+.chat-bubble { 
+    padding: 1rem 1.5rem; border-radius: 20px; margin-bottom: 1rem; 
+    max-width: 85%; font-family: 'Crimson Pro'; 
+}
+.chat-bubble.user { 
+    background: var(--accent-green); color: white; 
+    margin-left: auto; border-bottom-right-radius: 0; 
+}
+.chat-bubble.bot { 
+    background: rgba(255,255,255,0.1); color: var(--cream); 
+    border-bottom-left-radius: 0; border: 1px solid rgba(255,255,255,0.1); 
+}
+
+/* Controles de Voz */
+.voice-controls { 
+    text-align: center; padding: 1.5rem; 
+    border-top: 1px solid rgba(255,255,255,0.1); 
+}
+.voice-btn { 
+    width: 60px; height: 60px; border-radius: 50%; border: none; 
+    background: var(--accent-green); color: white; font-size: 1.5rem; 
+    cursor: pointer; animation: pulse 2s infinite; 
+}
+
+/* --- 8. LISTA DE AGENTES (Columna derecha) --- */
+.agents-list { margin-top: 2rem; }
+.agent-item { 
+    display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; 
+    background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px; 
+}
+.agent-icon { font-size: 1.5rem; color: var(--accent-green); margin-top: 5px; }
+
+/* --- 9. ANIMACIONES --- */
+@keyframes pulse { 
+    0% { box-shadow: 0 0 0 0 rgba(116, 183, 74, 0.7); } 
+    70% { box-shadow: 0 0 0 15px rgba(116, 183, 74, 0); } 
+    100% { box-shadow: 0 0 0 0 rgba(116, 183, 74, 0); } 
+}
+
+.fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* --- 10. FOOTER (Global) --- */
+footer {
+    background-color: var(--dark-green);
+    color: var(--cream);
+    padding-top: 4rem;
+    margin-top: auto;
+    border-top: 5px solid var(--medium-green);
+}
+.footer-content {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem; margin-bottom: 3rem;
+}
+.footer-brand p {
+    font-family: 'Montserrat', sans-serif; font-size: 0.9rem;
+    opacity: 0.8; margin-top: 1rem; max-width: 300px;
+}
+.logo-footer-img { height: 60px; width: auto; margin-bottom: 1rem; }
+.footer-section h4 {
+    color: var(--white); margin-bottom: 1.5rem; font-size: 1.1rem;
+    position: relative; display: inline-block;
+}
+.footer-section h4::after {
+    content: ''; display: block; width: 30px; height: 3px;
+    background: var(--accent-green); margin-top: 5px;
+}
+.footer-links-list { list-style: none; }
+.footer-links-list li { margin-bottom: 0.8rem; }
+.footer-links-list a {
+    color: var(--cream); font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem; transition: all 0.3s; display: inline-flex; align-items: center;
+}
+.footer-links-list a:hover { color: var(--accent-green); padding-left: 5px; }
+.social-links { display: flex; gap: 1rem; margin-top: 1rem; }
+.social-icon {
+    display: flex; justify-content: center; align-items: center;
+    width: 40px; height: 40px; background: rgba(255,255,255,0.1);
+    border-radius: 50%; color: var(--white); font-size: 1.2rem; transition: all 0.3s;
+}
+.social-icon:hover { background: var(--accent-green); transform: translateY(-3px); }
+.contact-info p {
+    font-family: 'Montserrat', sans-serif; font-size: 0.9rem;
+    margin-bottom: 0.5rem; display: flex; align-items: center; gap: 10px;
+}
+.footer-bottom {
+    background: rgba(0,0,0,0.2); padding: 1.5rem 0; text-align: center;
+    font-size: 0.85rem; font-family: 'Montserrat', sans-serif;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* --- 11. RESPONSIVE --- */
+@media (max-width: 900px) {
+    /* Layout General */
+    .container { padding: 0 1.5rem; }
+    .section-padding { padding: 3rem 0; }
+    
+    /* Navbar */
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
+    .logo-nav-img { height: 35px; }
+
+    /* Bot Layout */
+    
+    /* Header */
+    .title-logo-img { max-width: 260px; margin-bottom: 1rem; }
+    
+    /* Footer */
+    .footer-content { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
+    .footer-section h4::after { margin: 5px auto 0 auto; }
+    .social-links, .contact-info p { justify-content: center; }
+}
+
+@media (max-width: 400px) {
+    h1 { font-size: 1.8rem; }
+}
+
+/* --- 5. HEADER CON VIDEO DE FONDO --- */
+.page-header {
+    position: relative; /* Necesario para contener los elementos absolutos */
+    background: var(--dark-green); /* Color de respaldo por si el video no carga */
+    padding: 8rem 0 4rem; /* Un poco más de espacio abajo */
+    text-align: center;
+    overflow: hidden; /* Corta el video si se sale */
+    color: var(--cream);
+}
+
+/* El video en el fondo */
+.header-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cubre todo el espacio sin deformarse */
+    z-index: 1;
+}
+
+/* La capa verde transparente (Overlay) */
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradiente verde oscuro semitransparente */
+    background: linear-gradient(135deg, rgba(25, 41, 29, 0.90), rgba(50, 82, 58, 0.8));
+    z-index: 2;
+}
+
+/* El contenido (Texto y Logo) */
+.header-content {
+    position: relative;
+    z-index: 3; /* Encima de todo */
+}
+
+.title-logo-img { 
+    max-width: 380px; width: 100%; height: auto; 
+    margin: 0 auto 1.5rem auto; display: block; object-fit: contain; 
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3)); /* Sombra suave para que resalte más */
+}
+
+.tech-visuals {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    justify-content: flex-start;
+}
+
+/* --- RESPONSIVE (400px - 900px y menores) --- */
+@media (max-width: 900px) {
+    
+    /* 1. Ajustes Generales de Layout */
+    .container { 
+        padding: 0 1.5rem; 
+    }
+    
+    .section-padding { 
+        padding: 3rem 0; 
+    }
+
+    /* 2. Navbar (Menú Móvil) */
+    .nav-links { display: none; } /* Ocultar enlaces de escritorio */
+    .menu-toggle { display: block; } /* Mostrar icono hamburguesa */
+    .logo-nav-img { height: 35px; } /* Logo más pequeño */
+
+    /* 3. Header y Video */
+    .page-header {
+        padding: 6rem 0 3rem; /* Reducir espacio superior/inferior */
+        min-height: auto;
+    }
+
+    .title-logo-img { 
+        max-width: 280px; /* Logo principal más pequeño */
+        margin-bottom: 1rem; 
+    }
+    
+    .header-content p {
+        padding: 0 1rem;
+        font-size: 1rem;
+    }
+
+    /* 4. Sección Principal del Bot (Lo más importante) */
+    .tech-layout { 
+        /* Cambiar de 2 columnas a 1 sola columna vertical */
+        grid-template-columns: 1fr; 
+        gap: 3rem; 
+    }
+
+    .tech-visuals {
+        /* Centrar el chat visualmente */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        order: 1; /* El chat aparece primero */
+    }
+
+    .bot-interface {
+        /* Asegurar que el chat no sea gigante ni muy pequeño */
+        width: 100%;
+        max-width: 500px; 
+        margin: 0 auto;
+    }
+
+    .tech-info {
+        order: 2; /* El texto explicativo aparece después */
+        text-align: center; /* Centrar títulos y textos */
+    }
+
+    /* 5. Lista de Agentes */
+    .agents-list {
+        text-align: left; /* Mantener la lista alineada a la izquierda para legibilidad */
+        max-width: 600px;
+        margin: 2rem auto 0 auto; /* Centrar el bloque completo */
+    }
+
+    /* 6. Footer */
+    .footer-content { 
+        grid-template-columns: 1fr; /* Todo en una columna */
+        text-align: center; 
+        gap: 2.5rem; 
+    }
+    
+    .footer-brand p {
+        margin: 1rem auto; /* Centrar texto del footer */
+    }
+
+    .footer-section h4::after { 
+        margin: 5px auto 0 auto; /* Centrar la línea decorativa */
+    }
+    
+    .social-links, .contact-info p { 
+        justify-content: center; /* Centrar iconos y contacto */
+    }
+}
+
+/* Ajuste extra para móviles pequeños (aprox 400px) */
+@media (max-width: 450px) {
+    h1 { font-size: 1.8rem; }
+    
+    .chat-bubble {
+        font-size: 1rem; /* Texto del chat un poco más chico */
+        padding: 0.8rem 1rem;
+    }
+    
+    .voice-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}

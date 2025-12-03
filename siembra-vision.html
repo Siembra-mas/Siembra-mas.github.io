@@ -6,7 +6,7 @@
     <title>Siembra Visión | Futuras Implementaciones</title>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="vision.css">
      <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
 </head>
 <body>
@@ -26,8 +26,14 @@
         </div>
     </nav>
 
-    <header class="page-header">
-        <div class="container">
+<header class="vision-hero">
+        <video autoplay muted loop playsinline class="hero-bg-video">
+            <source src="img/campo_1.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content container">
             <img src="img/logo_vision.svg" alt="Logo Siembra Visión" class="title-logo-img">
             <p>El futuro: Diagnóstico visual mediante Computer Vision.</p>
         </div>
@@ -87,6 +93,74 @@
             </div>
         </div>
     </section>
+
+    <section class="section-padding" style="background-color: var(--cream);">
+        <div class="container fade-in">
+            <div class="center-text">
+                <h2 class="section-title">¿Qué es Siembra Visión?</h2>
+                <p style="text-align: justify;">
+                    Siembra Vision es un prototipo de aplicación web desarrollado en <strong>Python (Streamlit)</strong> 
+                    enfocado en la Agricultura de Precisión. El objetivo principal es ofrecer un diagnóstico 
+                    fitosanitario instantáneo mediante la Visión Computacional.
+                </p>
+                <br>
+                <p style="text-align: justify;">
+                    El sistema opera utilizando la cámara de un dispositivo móvil o PC para analizar hojas de cultivos 
+                    en tiempo real. Esto permite identificar rápidamente <strong>38 tipos de enfermedades</strong> y estados de 
+                    salud foliar (basado en el dataset PlantVillage), facilitando una toma de decisiones inmediata y optimizando los recursos.
+                </p>
+            </div>
+
+            <div class="center-text">
+                <h3 style="margin-bottom: 2rem;">Pilares Técnicos</h3>
+            </div>
+
+            <div class="vision-grid">
+                <div class="vision-card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-brain"></i> </div>
+                    <div class="card-body">
+                        <h3>Arquitectura de IA</h3>
+                        <p>Modelo <strong>MobileNetV2</strong> con técnica de Transferencia de Aprendizaje (Transfer Learning).</p>
+                        <ul class="feature-checklist">
+                            <li>Re-entrenado para 38 clases.</li>
+                            <li>Precisión de validación: ~95%.</li>
+                            <li>Ahorra tiempo y recursos de cómputo.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="vision-card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-microchip"></i> </div>
+                    <div class="card-body">
+                        <h3>Inferencia Ligera</h3>
+                        <p>El modelo (.h5) es sumamente ligero (11 MB) y se carga localmente para una predicción veloz.</p>
+                        <ul class="feature-checklist">
+                            <li>Viable para dispositivos de borde.</li>
+                            <li>Ejecución actual en PC.</li>
+                            <li>Ideal para modo "en vivo".</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="vision-card">
+                    <div class="card-header">
+                        <i class="fa-solid fa-camera-rotate"></i> </div>
+                    <div class="card-body">
+                        <h3>Modo Dual</h3>
+                        <p>Flexibilidad total para el usuario con dos interfaces de diagnóstico según la necesidad.</p>
+                        <ul class="feature-checklist">
+                            <li><strong>Modo En Vivo:</strong> Streaming continuo.</li>
+                            <li><strong>Foto Única:</strong> Subida de archivo.</li>
+                            <li>Mejora la experiencia de usuario.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <footer>
         <div class="container">
