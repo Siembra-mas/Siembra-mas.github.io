@@ -73,11 +73,48 @@ nav {
 
 /* --- HERO GENERAL (INDEX) --- */
 .hero-main {
+    position: relative; /* Necesario para controlar los elementos absolutos */
     min-height: 90vh;
-    background: linear-gradient(135deg, var(--dark-green), var(--medium-green));
-    display: flex; align-items: center; color: var(--cream); padding-top: 80px;
+    /* Quitamos el background linear-gradient antiguo porque usaremos el overlay */
+    background: #19291D; /* Color de respaldo por si el video tarda en cargar */
+    display: flex;
+    align-items: center;
+    color: var(--cream);
+    padding-top: 80px;
+    overflow: hidden; /* Importante: corta el video si se sale de los bordes */
 }
-.hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+
+.hero-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que el video cubra todo sin deformarse */
+    z-index: 1; /* Nivel 1: Al fondo */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Aquí definimos la transparencia del verde */
+    /* rgba(R, G, B, Opacidad) -> 0.7 es 70% visible, 30% transparente */
+    background: linear-gradient(135deg, rgba(25, 41, 29, 0.85), rgba(50, 82, 58, 0.7));
+    z-index: 2; /* Nivel 2: Encima del video */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3; /* Nivel 3: Encima de todo para que se pueda clickear y leer */
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 4rem; 
+    align-items: center; 
+}
+
 .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin: 1rem 0; }
 .badge { background: var(--accent-green); padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; }
 
@@ -327,4 +364,714 @@ footer {
     .footer-section h4::after { margin: 5px auto 0 auto; }
     .social-links { justify-content: center; }
     .contact-info p { justify-content: center; }
+}
+
+/* --- NUEVA SECCIÓN: PRODUCTO COMPLETO --- */
+
+/* 1. Barra de Validación */
+.validation-banner {
+    background: linear-gradient(90deg, var(--dark-green) 0%, var(--medium-green) 100%);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    color: var(--white);
+    box-shadow: 0 10px 20px rgba(25, 41, 29, 0.15);
+    flex-wrap: wrap;
+}
+
+.validation-icon {
+    font-size: 2.5rem;
+    color: var(--accent-green);
+}
+
+.validation-text {
+    flex: 1;
+}
+
+.validation-text h4 {
+    margin-bottom: 0.5rem;
+    color: var(--accent-green);
+}
+
+.validation-text p {
+    font-size: 0.95rem;
+    margin: 0;
+    opacity: 0.9;
+}
+
+.validation-badges {
+    display: flex;
+    gap: 10px;
+}
+
+.badge-tech {
+    background: rgba(255,255,255,0.1);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    border: 1px solid var(--accent-green);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* 2. Carrusel de Productos */
+.product-carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden; /* Esto oculta lo que sale de la pantalla */
+    width: 100%;
+    max-width: 1200px; /* Asegura que no se estire demasiado */
+    margin: 0 auto;
+}
+
+.product-carousel {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem 0; /* Quitamos padding lateral para cálculo exacto */
+    width: 100%;
+    /* Vital: permite que el JS mueva todo el bloque suavemente */
+    will-change: transform; 
+}
+.product-carousel::-webkit-scrollbar { display: none; }
+
+.product-card {
+    min-width: 300px;
+    max-width: 350px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    flex-shrink: 0; /* Evita que se encojan */
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-image-header {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: white;
+}
+
+.card-content {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.card-content h3 { color: var(--dark-green); margin-bottom: 0.2rem; }
+.card-content .subtitle { color: var(--accent-green); font-weight: 700; font-size: 0.9rem; margin-bottom: 1rem; text-transform: uppercase; }
+.card-content .description { font-size: 0.95rem; margin-bottom: 1.5rem; color: #555; }
+
+.feature-list-sm {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 1.5rem;
+    background: var(--white);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.feature-list-sm li {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+.feature-list-sm li i { color: var(--accent-green); margin-right: 8px; }
+
+.btn-sm { padding: 8px 20px; font-size: 0.9rem; }
+
+/* Botones de navegación del carrusel */
+.carousel-btn {
+    background: var(--dark-green);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: none; /* Oculto por defecto, visible con JS si se desea */
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+.carousel-btn:hover { background: var(--accent-green); }
+
+@media (min-width: 900px) {
+    .carousel-btn { display: flex; }
+    /* Ajuste para que se vea centrado en escritorio */
+    .product-carousel { justify-content: center; }
+}
+
+/* 3. Multimedia y Timeline */
+.media-container {
+    height: 100%;
+    min-height: 400px;
+    position: relative;
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    border: 4px solid var(--cream);
+    cursor: pointer;
+}
+
+.play-button {
+    font-size: 4rem;
+    color: var(--accent-green);
+    margin-bottom: 1rem;
+    transition: transform 0.3s;
+}
+.video-placeholder:hover .play-button { transform: scale(1.1); }
+
+.timeline {
+    margin-top: 2rem;
+    position: relative;
+    border-left: 2px solid var(--cream);
+    padding-left: 2rem;
+    margin-left: 1rem;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-icon {
+    position: absolute;
+    left: -2.9rem;
+    top: 0;
+    width: 35px;
+    height: 35px;
+    background: var(--accent-green);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    border: 3px solid white;
+}
+
+.timeline-content h4 { color: var(--dark-green); margin-bottom: 0.5rem; }
+.timeline-content p { font-size: 0.95rem; margin: 0; }
+
+/* Responsive ajustes extra */
+@media (max-width: 768px) {
+    .validation-banner { flex-direction: column; text-align: center; gap: 1rem; }
+    .validation-badges { justify-content: center; }
+    .product-carousel { justify-content: flex-start; } /* En móvil alineado a la izquierda para scroll */
+    .tech-layout { grid-template-columns: 1fr; }
+}
+
+/* --- SECCIÓN TRAYECTORIA --- */
+
+/* En styles.css */
+
+.trayectoria-grid {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+    flex-wrap: wrap;
+    
+    /* AGREGA ESTA LÍNEA: */
+    margin-bottom: 6rem; /* Esto empuja el footer hacia abajo */
+}
+.event-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Tarjeta Destacada (Xalapa) */
+.event-card.highlight-card {
+    border-top: 5px solid var(--accent-green);
+    transform: scale(1.02); /* Un poco más grande para resaltar */
+}
+.event-card.highlight-card:hover {
+    transform: scale(1.02) translateY(-5px);
+}
+
+.event-header {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--white);
+    background: #fdfdfd;
+}
+
+/* Placeholder para LOGO DEL EVENTO */
+.event-logo-placeholder {
+    width: 160px; /* Mucho más ancho para logos horizontales */
+    height: 70px; /* Altura controlada */
+    background: transparent; /* Fondo transparente o blanco según prefieras */
+    border-radius: 8px; /* Bordes ligeramente redondeados, pero ya no círculo */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alineado a la izquierda para mejor lectura */
+    justify-content: center;
+    overflow: hidden; 
+}
+.event-logo-placeholder img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; /* CRUCIAL: Mantiene la proporción del logo completo */
+    object-position: left center; /* Alinea el logo a la izquierda */
+}
+
+.event-logo-placeholder span {
+    font-size: 0.8rem;
+    color: #888;
+    font-weight: 600;
+}
+
+
+.badge-event {
+    background: var(--medium-green);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.badge-event.accent {
+    background: var(--accent-green);
+}
+
+.event-body {
+    padding: 1.5rem;
+}
+
+.event-body h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--dark-green);
+}
+
+.event-body p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+/* Placeholder para FOTO DE ACREDITACIÓN */
+.accreditation-photo-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: var(--white);
+    border-radius: 12px;
+    border: 2px dashed var(--accent-green); /* Borde punteado verde */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.accreditation-photo-placeholder:hover {
+    background-color: var(--cream);
+}
+
+.photo-overlay {
+    text-align: center;
+    color: var(--medium-green);
+}
+
+.photo-overlay i {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Conector (Flecha) */
+.trajectory-connector {
+    align-self: center;
+    font-size: 2rem;
+    color: var(--medium-green);
+    opacity: 0.5;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .trayectoria-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .trajectory-connector {
+        transform: rotate(90deg); /* Flecha hacia abajo en móvil */
+        margin: 1rem 0;
+    }
+    
+    .event-card.highlight-card {
+        transform: scale(1);
+    }
+}
+
+/* --- CAMBIOS EN HERO STATS (Para reemplazar los números por iconos/texto) --- */
+.stat-icon-hero {
+    font-size: 2rem;
+    color: var(--accent-green);
+    margin-bottom: 0.5rem;
+}
+.stat-title {
+    font-weight: 800;
+    color: var(--white);
+    font-family: 'Montserrat';
+    margin-bottom: 0.2rem;
+}
+.stat-desc {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.3;
+    font-family: 'Crimson Pro';
+}
+
+/* --- CAMBIOS EN EL CARRUSEL --- */
+
+/* 1. Fondo unificado verde oscuro degradado para todas las tarjetas */
+.unified-bg {
+    background: linear-gradient(135deg, var(--dark-green) 0%, var(--medium-green) 100%);
+    position: relative;
+}
+
+/* 2. Clase para los SVGs dentro de las tarjetas */
+.card-logo-svg {
+    max-width: 210px; /* Ajusta este tamaño según tus SVGs */
+    max-height: 100px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2)); /* Sombra suave para que resalte sobre el verde */
+    transition: transform 0.3s;
+}
+
+
+/* ELIMINAR O COMENTAR LAS CLASES ANTIGUAS DE COLOR */
+/* .link-bg { ... } */
+/* .bot-bg { ... } */
+/* .vision-bg { ... } */
+
+.cta-group {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap; /* Importante: permite que bajen de línea si no caben */
+    justify-content: center; /* Las centra horizontalmente */
+    gap: 2rem;
+    padding: 2rem 0;
+    width: 100%;
+}
+
+.product-card {
+    /* Flexibilidad: base de 300px, pero pueden crecer un poco */
+    flex: 1 1 300px; 
+    max-width: 350px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    margin-bottom: 1rem; /* Margen extra por si se apilan en móvil */
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-image-header {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Fondo unificado */
+.unified-bg {
+    background: linear-gradient(135deg, var(--dark-green) 0%, var(--medium-green) 100%);
+}
+
+.product-card:hover .card-logo-svg {
+    transform: scale(1.1);
+}
+
+.card-content {
+    padding: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Para alinear botones al final si fuera necesario */
+}
+
+.card-content h3 { color: var(--dark-green); margin-bottom: 0.2rem; }
+.card-content .subtitle { color: var(--accent-green); font-weight: 700; font-size: 0.9rem; margin-bottom: 1rem; text-transform: uppercase; }
+.card-content .description { font-size: 0.95rem; margin-bottom: 1.5rem; color: #555; }
+
+.feature-list-sm {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 1.5rem;
+    background: var(--white);
+    padding: 1rem;
+    border-radius: 10px;
+}
+.feature-list-sm li {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+.feature-list-sm li i { color: var(--accent-green); margin-right: 8px; }
+.btn-sm { padding: 8px 20px; font-size: 0.9rem; align-self: center; }
+
+/* Eliminamos estilos de botones next/prev viejos */
+.carousel-btn, .product-carousel-wrapper { display: none; }
+
+/* --- ESTILOS NUEVOS PARA EL LOGO DE RESPALDO --- */
+
+/* Contenedor del logo para alineación */
+.validation-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 2rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.2); /* Línea divisoria */
+    margin-left: 1rem;
+    height: 100%;
+}
+
+/* La imagen del logo en sí */
+.partner-logo {
+    max-height: 80px; /* Altura máxima para que no deforme el banner */
+    width: auto;      /* Mantiene la proporción */
+    object-fit: contain;
+    opacity: 0.9;
+    transition: transform 0.3s;
+}
+
+.partner-logo:hover {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+/* AJUSTE RESPONSIVE (Móvil) */
+@media (max-width: 768px) {
+    .validation-banner {
+        flex-direction: column; 
+        text-align: center; 
+        gap: 1.5rem;
+    }
+    
+    .validation-text h4 {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .partner-logo {
+        max-height: 100px; /* Un poco más grande en móvil si es necesario */
+    }
+}
+
+.icon-stack {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;  /* Ancho fijo para que no se mueva */
+    height: 60px;
+}
+
+.base-icon {
+    font-size: 3rem; /* Tamaño grande */
+    color: var(--accent-green);
+}
+
+.check-icon {
+    position: absolute; /* Esto permite que flote encima */
+    font-size: 1.4rem;  /* Tamaño más pequeño para caber dentro */
+    color: var(--dark-green); /* Color oscuro para contraste */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrado matemático perfecto */
+}
+
+@media (max-width: 768px) {
+    .icon-stack {
+        margin: 0 auto; /* Centrar el icono en móvil */
+    }
+}
+
+.partner-logo.square-logo {
+    width: 90px;  /* Ancho fijo */
+    height: 90px; /* Alto fijo (Cuadrado 1:1) */
+    
+    /* TRUCO CSS PARA SVG: */
+    /* Esto vuelve el SVG completamente BLANCO para que se vea bien en el fondo oscuro. */
+    /* Si quieres el color original del logo, BORRA la siguiente línea: */
+    
+    opacity: 0.9;
+    transition: transform 0.3s ease;
+}
+
+.partner-logo.square-logo:hover {
+    transform: scale(1.1); /* Efecto de zoom suave al pasar el mouse */
+    opacity: 1;
+}
+
+/* --- AJUSTES PARA MÓVIL --- */
+@media (max-width: 900px) {
+    .validation-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .validation-logo-container {
+        border-left: none; /* Quitamos la línea lateral */
+        padding-left: 0;
+        margin-left: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.2); /* Ponemos línea superior */
+        padding-top: 1.5rem;
+        width: 100%;
+    }
+    
+    /* En móvil el logo puede ser un poquito más grande para que luzca */
+    .partner-logo.square-logo {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* --- NUEVO CARRUSEL TIPO COLLAGE --- */
+.collage-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 400px; /* Misma altura que tenía el video */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border: 4px solid var(--cream);
+    background-color: var(--dark-green); /* Fondo por si tarda en cargar imagen */
+}
+
+.carousel-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen para llenar el espacio sin deformar */
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Suavidad del cambio */
+    z-index: 1;
+}
+
+.carousel-img.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Texto decorativo encima de las fotos */
+.collage-overlay {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(25, 41, 29, 0.8);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-family: 'Montserrat', sans-serif;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* --- ESTILOS PARA LAS FOTOS DE TRAYECTORIA --- */
+
+.accreditation-card {
+    width: 100%;
+    height: 220px; /* Altura fija para que todas se vean uniformes */
+    border-radius: 12px;
+    overflow: hidden; /* Corta la imagen si es muy grande */
+    position: relative;
+    margin-top: 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.accreditation-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* CRUCIAL: Rellena el cuadro sin deformar la foto */
+    object-position: center; /* Centra la foto */
+    transition: transform 0.5s ease; /* Efecto suave */
+}
+
+/* Efecto Zoom al pasar el mouse */
+.accreditation-card:hover .accreditation-img {
+    transform: scale(1.1);
+}
+
+/* Gradiente oscuro abajo para que se lea el texto */
+.photo-overlay-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(25, 41, 29, 0.9), transparent);
+    padding: 1rem;
+    color: white;
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none; /* Deja que el click pase a la imagen si fuera un link */
+}
+
+.photo-overlay-gradient i {
+    color: var(--accent-green);
 }
