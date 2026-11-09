@@ -42,13 +42,17 @@
       grid-template-columns: minmax(0, 1fr);
       place-items: center;
       padding: 32px 16px;
-      background: radial-gradient(120% 80% at 50% 0%, var(--milpa) 0%, var(--monte) 65%) var(--monte);
+      background: var(--monte) url("img/campo_fondo.jpg") center / cover;
       color: var(--fondo);
       font-family: var(--letra-lectura);
       font-size: 1.1875rem;
       line-height: 1.5;
       text-align: center;
     }
+    .fondo, body::before { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; }
+    .fondo { object-fit: cover; z-index: -2; }
+    /* velo oscuro para que el texto mantenga el contraste sobre el video */
+    body::before { content: ""; background: linear-gradient(180deg, rgba(25,41,29,.72) 0%, rgba(25,41,29,.9) 100%); }
     main { width: 100%; max-width: 640px; }
 
     .logos {
@@ -116,12 +120,16 @@
       .separador { width: 2px; height: 56px; }
     }
     @media (prefers-reduced-motion: reduce) {
+      .fondo { display: none; }
       .cta { transition: none; }
       .cta:hover { transform: none; }
     }
   </style>
 </head>
 <body>
+  <video class="fondo" autoplay muted loop playsinline preload="auto" poster="img/campo_fondo.jpg" aria-hidden="true">
+    <source src="img/campo_fondo.mp4" type="video/mp4">
+  </video>
   <main>
     <div class="logos">
       <img class="logo-siembra" src="img/logo_siembra_mas.svg" alt="Siembra +" width="220" height="50">
